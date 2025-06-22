@@ -1,4 +1,4 @@
-# 🚀 Siva's Modern Portfolio
+# 🚀 Sai's Modern Portfolio
 
 A stunning, modern portfolio website built with Next.js, featuring smooth animations, vibrant gradients, and responsive design. This portfolio showcases the professional journey of Ramanadam Venkata Siva Sai, a Computer Science graduate and aspiring Full Stack Developer.
 
