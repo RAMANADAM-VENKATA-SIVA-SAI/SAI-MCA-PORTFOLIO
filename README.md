@@ -2,7 +2,7 @@
 
 A stunning, modern portfolio website built with Next.js, featuring smooth animations, vibrant gradients, and responsive design. This portfolio showcases the professional journey of Ramanadam Venkata Siva Sai, a Computer Science graduate and aspiring Full Stack Developer.
 
-![Portfolio Preview](https://img.shields.io/badge/Portfolio-Live-orange?style=for-the-badge&logo=vercel)
+
 
 ## ✨ Features
 
