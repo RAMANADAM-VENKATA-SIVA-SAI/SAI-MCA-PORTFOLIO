@@ -1,7 +1,5 @@
 "use client"
 
-import type React from "react"
-
 import { useState, useEffect } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import {
@@ -18,21 +16,13 @@ import {
   User,
   Download,
   ExternalLink,
-  Upload,
-  FileText,
-  X,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("hero")
-  const [uploadedResume, setUploadedResume] = useState<File | null>(null)
-  const [isUploadDialogOpen, setIsUploadDialogOpen] = useState(false)
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
 
@@ -64,34 +54,9 @@ export default function Portfolio() {
     }
   }
 
-  const handleResumeUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-    if (file && file.type === "application/pdf") {
-      setUploadedResume(file)
-      setIsUploadDialogOpen(false)
-    } else {
-      alert("Please upload a PDF file only.")
-    }
-  }
-
   const downloadResume = () => {
-    if (uploadedResume) {
-      // Download the uploaded resume
-      const url = URL.createObjectURL(uploadedResume)
-      const link = document.createElement("a")
-      link.href = url
-      link.download = uploadedResume.name
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-      URL.revokeObjectURL(url)
-    } else {
-      alert("Please upload your resume first to download it.")
-    }
-  }
-
-  const removeUploadedResume = () => {
-    setUploadedResume(null)
+    // Open Google Drive link in new tab
+    window.open("https://drive.google.com/file/d/1EevWyA6U0CXI9vpB26pJcZo5u_aNP07X/view?usp=drivesdk", "_blank")
   }
 
   return (
@@ -171,76 +136,15 @@ export default function Portfolio() {
                 Get In Touch
               </Button>
 
-              <div className="flex gap-2">
-                {uploadedResume && (
-                  <Button
-                    variant="outline"
-                    className="border-2 border-blue-300 text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-full text-lg font-medium"
-                    onClick={downloadResume}
-                  >
-                    <Download className="w-5 h-5 mr-2" />
-                    Download My Resume
-                  </Button>
-                )}
-
-                <Dialog open={isUploadDialogOpen} onOpenChange={setIsUploadDialogOpen}>
-                  <DialogTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className="border-2 border-green-300 text-green-600 hover:bg-green-50 px-8 py-3 rounded-full text-lg font-medium"
-                    >
-                      <Upload className="w-5 h-5 mr-2" />
-                      Upload Resume
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-md">
-                    <DialogHeader>
-                      <DialogTitle className="text-center bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
-                        Upload Your Resume
-                      </DialogTitle>
-                    </DialogHeader>
-                    <div className="space-y-4">
-                      <div className="text-center">
-                        <p className="text-gray-600 mb-4">
-                          Upload a PDF version of your resume to make it available for download
-                        </p>
-                        <Label htmlFor="resume-upload" className="cursor-pointer">
-                          <div className="border-2 border-dashed border-blue-300 rounded-lg p-8 hover:border-blue-400 transition-colors">
-                            <Upload className="w-12 h-12 mx-auto mb-4 text-blue-500" />
-                            <p className="text-blue-600 font-medium">Click to upload PDF</p>
-                            <p className="text-gray-500 text-sm mt-2">PDF files only</p>
-                          </div>
-                        </Label>
-                        <Input
-                          id="resume-upload"
-                          type="file"
-                          accept=".pdf"
-                          onChange={handleResumeUpload}
-                          className="hidden"
-                        />
-                      </div>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              </div>
-            </motion.div>
-
-            {/* Resume Status */}
-            {uploadedResume && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="flex items-center justify-center gap-2 mb-8"
+              <Button
+                variant="outline"
+                className="border-2 border-blue-300 text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-full text-lg font-medium"
+                onClick={downloadResume}
               >
-                <div className="bg-green-100 border border-green-300 rounded-full px-4 py-2 flex items-center gap-2">
-                  <FileText className="w-4 h-4 text-green-600" />
-                  <span className="text-green-700 text-sm font-medium">{uploadedResume.name}</span>
-                  <button onClick={removeUploadedResume} className="text-green-600 hover:text-green-800 ml-2">
-                    <X className="w-4 h-4" />
-                  </button>
-                </div>
-              </motion.div>
-            )}
+                <Download className="w-5 h-5 mr-2" />
+                View My Resume
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
 
@@ -760,59 +664,16 @@ export default function Portfolio() {
                 </motion.a>
               </div>
 
-              {/* Resume Upload/Download Section */}
-              <div className="flex flex-col items-center gap-4">
-                {!uploadedResume ? (
-                  <Dialog open={isUploadDialogOpen} onOpenChange={setIsUploadDialogOpen}>
-                    <DialogTrigger asChild>
-                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white px-8 py-3 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
-                          <Upload className="w-5 h-5 mr-2" />
-                          Upload Your Resume
-                        </Button>
-                      </motion.div>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-md">
-                      <DialogHeader>
-                        <DialogTitle className="text-center bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
-                          Upload Your Resume
-                        </DialogTitle>
-                      </DialogHeader>
-                      <div className="space-y-4">
-                        <div className="text-center">
-                          <p className="text-gray-600 mb-4">
-                            Upload a PDF version of your resume to make it available for download
-                          </p>
-                          <Label htmlFor="resume-upload-contact" className="cursor-pointer">
-                            <div className="border-2 border-dashed border-blue-300 rounded-lg p-8 hover:border-blue-400 transition-colors">
-                              <Upload className="w-12 h-12 mx-auto mb-4 text-blue-500" />
-                              <p className="text-blue-600 font-medium">Click to upload PDF</p>
-                              <p className="text-gray-500 text-sm mt-2">PDF files only</p>
-                            </div>
-                          </Label>
-                          <Input
-                            id="resume-upload-contact"
-                            type="file"
-                            accept=".pdf"
-                            onChange={handleResumeUpload}
-                            className="hidden"
-                          />
-                        </div>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
-                ) : (
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button
-                      onClick={downloadResume}
-                      className="bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white px-8 py-3 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
-                    >
-                      <Download className="w-5 h-5 mr-2" />
-                      Download My Resume
-                    </Button>
-                  </motion.div>
-                )}
-              </div>
+              {/* Resume Download Button */}
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  onClick={downloadResume}
+                  className="bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white px-8 py-3 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <Download className="w-5 h-5 mr-2" />
+                  View My Resume
+                </Button>
+              </motion.div>
             </motion.div>
           </div>
         </div>
