@@ -28,7 +28,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "about", "education", "skills", "projects", "experience", "contact"]
+      const sections = ["hero", "about", "education", "skills", "certificates", "projects", "experience", "contact"]
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -77,7 +77,7 @@ export default function Portfolio() {
               RVSS
             </motion.div>
             <div className="hidden md:flex space-x-8">
-              {["About", "Education", "Skills", "Projects", "Experience", "Contact"].map((item) => (
+              {["About", "Education", "Skills", "Certificates", "Projects", "Experience", "Contact"].map((item) => (
                 <motion.button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -413,6 +413,135 @@ export default function Portfolio() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certificates Section */}
+      <section id="certificates" className="py-20">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+              Certificates & Achievements
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Professional certifications and achievements that validate my technical expertise and commitment to
+              continuous learning.
+            </p>
+          </motion.div>
+
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Google Data Analytics Certificate",
+                  issuer: "Google via Coursera",
+                  date: "2024",
+                  description:
+                    "Professional certificate in data analytics, covering data cleaning, analysis, and visualization using tools like SQL, R, and Tableau",
+                  link: "https://coursera.org/share/85505408af86cc76c14db22158432faf",
+                  icon: "📊",
+                  category: "Data Analytics",
+                },
+                {
+                  title: "Advanced Microsoft Power BI",
+                  issuer: "Microsoft via Coursera",
+                  date: "2024",
+                  description:
+                    "Advanced Power BI certification covering dashboard creation, DAX functions, data modeling, and business intelligence solutions",
+                  link: "https://coursera.org/share/53037e2b9768225ffb07cbf12df45a1f",
+                  icon: "📈",
+                  category: "Business Intelligence",
+                },
+              ].map((cert, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                    <CardHeader>
+                      <div className="flex items-start justify-between">
+                        <div className="flex items-start gap-3">
+                          <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                            {cert.icon}
+                          </div>
+                          <div className="flex-1">
+                            <CardTitle className="text-lg text-gray-800 group-hover:text-blue-600 transition-colors">
+                              {cert.title}
+                            </CardTitle>
+                            <CardDescription className="text-gray-600 mt-1">{cert.issuer}</CardDescription>
+                          </div>
+                        </div>
+                        <motion.a
+                          href={cert.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="text-blue-600 hover:text-blue-800 opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          <ExternalLink className="w-5 h-5" />
+                        </motion.a>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3">
+                        <p className="text-sm text-gray-600 leading-relaxed">{cert.description}</p>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center text-gray-500 text-sm">
+                            <Calendar className="w-4 h-4 mr-1" />
+                            {cert.date}
+                          </div>
+                          <Badge
+                            variant="secondary"
+                            className="bg-gradient-to-r from-blue-100 to-green-100 text-gray-700 text-xs"
+                          >
+                            {cert.category}
+                          </Badge>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Call to Action */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="text-center mt-12"
+            >
+              <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-8">
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">Continuous Learning Journey</h3>
+                <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                  I believe in continuous improvement and staying updated with the latest technologies. These
+                  certifications represent my commitment to professional growth and technical excellence.
+                </p>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Badge className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-4 py-2 text-sm">
+                    2 Professional Certifications
+                  </Badge>
+                  <Badge className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-2 text-sm">
+                    Google & Microsoft Certified
+                  </Badge>
+                  <Badge className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-4 py-2 text-sm">
+                    Coursera Verified
+                  </Badge>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
