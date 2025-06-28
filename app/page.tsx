@@ -461,7 +461,7 @@ export default function Portfolio() {
                 },
                 {
                   title: "Advanced Excel Certificate",
-                  issuer: "Professional Training Institute",
+                  issuer: "Infosys Wingspan",
                   date: "2024",
                   description:
                     "Advanced Excel certification covering complex formulas, data analysis, pivot tables, macros, and advanced spreadsheet management techniques",
@@ -471,7 +471,7 @@ export default function Portfolio() {
                 },
                 {
                   title: "Python Programming Certificate",
-                  issuer: "Professional Development Program",
+                  issuer: "Infosys Wingspan",
                   date: "2024",
                   description:
                     "Comprehensive Python programming certification covering advanced concepts, data structures, algorithms, and practical application development",
