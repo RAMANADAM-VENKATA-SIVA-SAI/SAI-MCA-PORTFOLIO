@@ -56,7 +56,7 @@ export default function Portfolio() {
 
   const downloadResume = () => {
     // Open Google Drive link in new tab
-    window.open("https://drive.google.com/file/d/1EevWyA6U0CXI9vpB26pJcZo5u_aNP07X/view?usp=drivesdk", "_blank")
+    window.open("https://drive.google.com/file/d/1cOnqW6r17AW1xgx7dV7UEBlVP3DiPzUB/view?usp=drive_link", "_blank")
   }
 
   return (
