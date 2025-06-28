@@ -138,7 +138,7 @@ export default function Portfolio() {
 
               <Button
                 variant="outline"
-                className="border-2 border-blue-300 text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-full text-lg font-medium"
+                className="border-2 border-blue-300 text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-full text-lg font-medium bg-transparent"
                 onClick={downloadResume}
               >
                 <Download className="w-5 h-5 mr-2" />
@@ -459,6 +459,26 @@ export default function Portfolio() {
                   icon: "📈",
                   category: "Business Intelligence",
                 },
+                {
+                  title: "Advanced Excel Certificate",
+                  issuer: "Professional Training Institute",
+                  date: "2024",
+                  description:
+                    "Advanced Excel certification covering complex formulas, data analysis, pivot tables, macros, and advanced spreadsheet management techniques",
+                  link: "https://drive.google.com/file/d/1wEB-ft8WO0_v0a_WrfA8YLMCN5ifFqwI/view?usp=drive_link",
+                  icon: "📈",
+                  category: "Data Analysis",
+                },
+                {
+                  title: "Python Programming Certificate",
+                  issuer: "Professional Development Program",
+                  date: "2024",
+                  description:
+                    "Comprehensive Python programming certification covering advanced concepts, data structures, algorithms, and practical application development",
+                  link: "https://drive.google.com/file/d/1FuPgv6cycv7OyCinfh4knRe6YXdASKU_/view?usp=drive_link",
+                  icon: "🐍",
+                  category: "Programming",
+                },
               ].map((cert, index) => (
                 <motion.div
                   key={index}
@@ -531,13 +551,13 @@ export default function Portfolio() {
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                   <Badge className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-4 py-2 text-sm">
-                    2 Professional Certifications
+                    4 Professional Certifications
                   </Badge>
                   <Badge className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-2 text-sm">
                     Google & Microsoft Certified
                   </Badge>
                   <Badge className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-4 py-2 text-sm">
-                    Coursera Verified
+                    Verified Skills
                   </Badge>
                 </div>
               </div>
