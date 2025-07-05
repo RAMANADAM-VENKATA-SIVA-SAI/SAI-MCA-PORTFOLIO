@@ -586,6 +586,89 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Badges Showcase</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    header {
+      background-color: #2d3748;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #2d3748;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 15px;
+      padding: 10px;
+      border-left: 4px solid #4299e1;
+      background-color: #edf2f7;
+      border-radius: 4px;
+    }
+    a {
+      color: #3182ce;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <header>
+    <h1>My Professional Badges</h1>
+    <p>Certifications and Achievements</p>
+  </header>
+
+  <section id="badges">
+    <h2>🎖️ Badges</h2>
+    <ul>
+      <li>
+        <strong>Data Fundamentals</strong><br />
+        <a href="https://drive.google.com/file/d/10pGZeb36Ii3Tiwx4GKyHQvJ5F6knVCEg/view?usp=drive_link" target="_blank">
+          View Credential
+        </a>
+      </li>
+      <li>
+        <strong>Data Analysis Using Python</strong><br />
+        <a href="https://drive.google.com/file/d/1jfah-RFYr_GgyIu58ODPlvXY1KXhmvjL/view?usp=drive_link" target="_blank">
+          View Credential
+        </a>
+      </li>
+      <li>
+        <strong>Big Data Foundations</strong><br />
+        <a href="https://drive.google.com/file/d/1Pr52sZlZqhezQQT-Vq-T5x0txmGkS_zT/view?usp=drive_link" target="_blank">
+          View Credential
+        </a>
+      </li>
+    </ul>
+  </section>
+
+
 
       {/* Projects Section */}
       <section id="projects" className="section">
